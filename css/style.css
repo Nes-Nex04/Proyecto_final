@@ -26,6 +26,8 @@ p, li, td, th, label {
     color: #fff;
     padding: 1rem;
     box-shadow: 2px 0 8px rgba(0,0,0,0.5);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .sidebar a {
@@ -42,11 +44,17 @@ p, li, td, th, label {
 
 /* header */
 header {
-    background: linear-gradient(90deg, #b30000, #e60000);
+    background: linear-gradient(90deg, rgba(179,0,0,0.8), rgba(230,0,0,0.8)), url('https://www.wsupercars.com/wp-content/uploads/manufacturer-header-formula-1.png') center/cover no-repeat;
     color: #fff;
-    padding: 1rem;
+    padding: 2rem 1rem;
     text-align: center;
     box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    position: relative;
+}
+
+header h1 {
+    position: relative;
+    z-index: 1;
 }
 
 nav ul {
@@ -85,14 +93,22 @@ section {
     margin-bottom: 2rem;
     padding: 1.5rem;
     background-color: #fff;
-    border-radius: 6px;
+    border-radius: 20px;
     color: #333;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+section:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
 section h2, section h3 {
     color: #c00;
     margin-top: 0;
+    border-bottom: 2px solid #c00;
+    padding-bottom: 0.3rem;
 }
 
 /* tablas */
@@ -117,17 +133,89 @@ tr:nth-child(even) {
 /* galería */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1rem;
+    align-items: center;
 }
 
 .gallery img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 4px;
+    border-radius: 12px;
+    transition: transform 0.3s;
 }
 
+.gallery img:hover {
+    transform: scale(1.05);
+}
+/* línea de tiempo */
+.timeline {
+    display: flex;
+    overflow-x: auto;
+    padding: 1rem 0;
+    gap: 1rem;
+}
+
+.timeline-item {
+    flex: 0 0 auto;
+    text-align: center;
+    background-color: #fafafa;
+    border-radius: 12px;
+    padding: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.timeline-item img {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto 0.5rem;
+}
+
+.timeline-item .year {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: #c00;
+}
+
+/* campeones gallery */
+#campeones-galeria .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+#campeones-galeria .champion {
+    text-align: center;
+}
+
+#campeones-galeria .champion img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+#campeones-galeria table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+#campeones-galeria th, #campeones-galeria td {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+}
+
+#campeones-galeria a {
+    color: #c00;
+    text-decoration: none;
+}
+
+#campeones-galeria a:hover {
+    text-decoration: underline;
+}
 /* formulario */
 form {
     display: flex;
@@ -144,7 +232,7 @@ form button {
     margin-top: 0.3rem;
     padding: 0.6rem;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 1rem;
 }
 
@@ -311,18 +399,6 @@ th, td {
 
 tr:nth-child(even) {
     background-color: #f2f2f2;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-}
-
-.gallery img {
-    width: 100%;
-    height: auto;
-    display: block;
 }
 
 footer {
